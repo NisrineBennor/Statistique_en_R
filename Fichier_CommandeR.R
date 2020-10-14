@@ -1,5 +1,5 @@
-Nisrine Bennor 
-==================
+#Nisrine Bennor 
+#==================
   
 #Chapitre 1
 
@@ -435,7 +435,7 @@ plot(smp.l$age, smp.l$dur.interv)
 plot(jitter(smp.l$age), jitter(smp.l$dur.interv))
 
 #### changer le niveau de bruit par défaut sur l'age et dur.interv
-plot(jitter(smp.l$age), jitter(smp.l$dur.interv,factor = 4))
+lala <-plot(jitter(smp.l$age), jitter(smp.l$dur.interv,factor = 4))
 
 #### tracer la droite de la régression linéaire
 abline(lm(smp.l$dur.interv~smp.l$age),lwd=2)
@@ -581,7 +581,6 @@ m4<- glm(n.enfant.bin~age, smp5, family = binomial("logit"))
 summary(m4)
 
 #### exercice 4
-
 aggregate(age ~ prof, data = subset(smp5, n.enfant > 3 & prof %in% c("sans emploi", "ouvrier", "cadre", "employé"), c(age, prof)), var)
 281/88
 
@@ -608,11 +607,27 @@ summary(m10)
 ###on trouve alors p = 0.7/1.7=0.412
 
 
+##Quiz5
+##On souhaite comparer le risque de rechute de la maladie alcoolique dans deux 
+##sous-groupes: le groupe des plus de 50 ans (strictement plus de 50 ans, recodé en “1”)
+##et le groupe des moins de 50 ans (50 ou moins, recodé en “0”).
+##Donner la p-value associée au test statistique correspondant 
+alcool<- read.csv2("alcool.csv")
+install.packages("survival")
+library(survival)
+alcool$AGE.c <- ifelse(alcool$AGE >= 50 , 1 , 0)
+str(alcool)
+diff<-survdiff(Surv(t,SEVRE)~AGE.c, data=alcool)
+p <- pchisq(diff$chisq, length(diff$n)-1, lower.tail = FALSE)
+sprintf("%.4f",p)
 
+##On souhaite tester l'association entre le risque de rechute de la maladie
+##alcoolique et les variables SEXE, AGE et l'interaction entre les variables 
+##SEXE et AGE. Donner la p-value associée
+##à l'interaction entre les variables SEXE et AGE dans le test correspondant
 
-
-
-
+mod<-coxph(Surv(t,SEVRE)~AGE+SEXE+AGE*SEXE, data=alcool)
+mod
 
 
 
