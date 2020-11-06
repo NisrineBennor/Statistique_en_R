@@ -60,7 +60,7 @@ autre, sans emploi) ;
 
 
 
-##**Jeu de données « satisfaction_hopital.csv »**
+## **Jeu de données « satisfaction_hopital.csv »**
 
 Il s’agit d’une étude évaluant la qualité de relation et la quantité d’information reçue par le patient lors de son séjour à l’hôpital. 534 patients ont été recrutés sur plusieurs hôpitaux de la région parisienne.
 Contenu du fichier :
