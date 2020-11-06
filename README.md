@@ -57,3 +57,26 @@ autre, sans emploi) ;
 - suicide.s : score de risque suicidaire variant de 1 à 6 et obtenu à partir de la somme des réponses obtenues à 6 items parmi lesquels « Au cours du mois écoulé avez-vous voulu vous faire du mal ? Au cours du mois écoulé avez-vous établi la façon dont vous pourriez vous suicider ? » ;
 - suicide.hr : le détenu est-il à haut risque suicidaire ? (1 : faible, 2 : modéré, 3 : élevé) ; relatif à l’instrument de mesure de la personnalité « TCI » (Temperament and Character Inventory) de R. Cloninger (0 : non, 1 : oui) ;
 - suicide.past : existence d’un antécédent de tentative de suicide (0 : non, 1 : oui) ; dur.interv :duréedel’interviewenminutes;
+
+
+
+##**Jeu de données « satisfaction_hopital.csv »**
+
+Il s’agit d’une étude évaluant la qualité de relation et la quantité d’information reçue par le patient lors de son séjour à l’hôpital. 534 patients ont été recrutés sur plusieurs hôpitaux de la région parisienne.
+Contenu du fichier :
+- service : code (de 1 à 8) du service ayant accueilli le patient sexe : sexe du patient (0 homme, 1 femme)
+- age : âge en années
+- profession :
+1 : agriculteur exploitant
+2 : artisan, commerçant, chef d'entreprise
+3 : cadre, profession intellectuelle ou artistique, profession libérale
+4 : profession intermédiaire de l'enseignement, de la santé, du travail social ou de la fonction
+publique, technicien, contremaître, agent de maîtrise, clergé 5 : employé
+6 : ouvrier
+7 : étudiant, militaire, chômeur sans avoir jamais travaillé
+8 : autre
+- amelioration.sante : impression d'amélioration de la santé du fait du séjour à l'hôpital (codé de 0 : aggravée, à 3 : nettement améliorée)
+- amelioration.moral : impression d'amélioration du moral du fait du séjour à l'hôpital (codé de 0 : aggravé, à 3 : nettement amélioré)
+- recommander : recommander le service à son entourage (codé 0 : non, 1 : oui, probablement, 2 : oui, sûrement)
+- score.information : score relatif à la qualité de l’information reçue pendant le séjour (score variant de 10 à 40)
+- score.relation : score relatif à la qualité des relations avec le personnel soignant pendant le séjour (score variant de 10 à 40)
