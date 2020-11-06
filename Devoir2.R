@@ -8,58 +8,6 @@ Satisfaction_Hopital <- read.csv2("satisfaction_hopital.csv")
 ### afficher le nombre de ligne et de colonnes du jeu de données 
 dim(Satisfaction_Hopital)
 
-## Question 1 : pour recoder la variable "recommander" en variable binaire qu'on va appeler "recommander.b" où les modalités 0,1 seront récodées en 0 ,et 2 sera recodée en 1 et pour cela on utilise la fonction suivante:
-
-Satisfaction_Hopital$recommander.b <- ifelse(Satisfaction_Hopital$recommander == 2 , 1 , 0)
-str(Satisfaction_Hopital)
-
-### et pour bien verifier ça on fait : 
-table(Satisfaction_Hopital$recommander.b,Satisfaction_Hopital$recommander, deparse.level = 2, useNA = "always")
-
-## Question 2:  pour calculer l'odds-ratio entre les variables "recommander.b » et « sexe » on installe le package Epi
-install.packages("Epi")
-library(Epi)
-twoby2(1 - Satisfaction_Hopital$recommander.b, 1- Satisfaction_Hopital$sexe)
-##### La valeur de l'odds-ratio =  1.0837
-
-#### intervalle de cofiance de l'odds-ratio est :  [0.7169 , 1,6383]
-
-## Question 3: 
-
-#### on teste statistiquement qu'il existe les conditions de la validié du la correlation de Pearson entre « score.relation » et « age ».
-###  pour tester statistiquement la corrélation il faut que l'une des 2 variables suit une distribution de loi normale. pour cela on effectue un histogramme de la variable age 
-hist(Satisfaction_Hopital$age)
-
-#### le graphique est plus au moins symétrique. Donc on va dire qu'elle suit une loi normale.
-#### testons statistiquement la correlation avec la fonction cor.test()
-cor.test(Satisfaction_Hopital$age, Satisfaction_Hopital$score.relation)
-
-## Question 4:
-
-#### vérification des contions de validité de la méthode utilisée
-## le nombre de sujet est supérieur à 30 -> 534 > 30
-## alors la distirbution suit une loi normale
-
-#### la variance dans chaque groupe doit être égale
-by(Satisfaction_Hopital$score.relation, Satisfaction_Hopital$sexe, sd, na.rm= TRUE)
-#### les résultats sont quasiment idéntiques 
-
-### Test t de Student  pour savoir si la moyenne du score de relation est-il significativement différente chez les hommes et chez les femmes ?
-t.test (Satisfaction_Hopital$score.relation~ Satisfaction_Hopital$sexe, var.equal= TRUE)
-#### le résultat montre  que p = 0.2649 > 0.05 donc on peut dire qu'il existe une différence statistiquement significative entre le score de relation chez les hommes et le score de relation chez les femmes.
-
-correction 2
-
-#Devoir n°2
-
-### definir le repertoire du travail 
-setwd(~/INTRO_Stat_FunMooc_Nisrine)
-### importer le fichier satisfaction_hopital.csv
-Satisfaction_Hopital <- read.csv2("satisfaction_hopital.csv")
-### afficher le nombre de ligne et de colonnes du jeu de données 
-dim(Satisfaction_Hopital)
-
-
 #Question1 : Transformez la variable « recommander » en une variable binaire « recommander.b » : « recommander.b » vaut 0 si « recommander » vaut 0 ou 1 ; « recommander.b » vaut 1 si « recommander » vaut 2.
 
 ## pour recoder la variable "recommander" en variable binaire qu'on va appeler "recommander.b" où les modalités 0,1 seront récodées en 0 ,et 2 sera recodée en 1 et pour cela on utilise la fonction suivante:
